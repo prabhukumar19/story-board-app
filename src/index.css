@@ -34,6 +34,7 @@ code {
 .select-status{
   background-image: url("./assets/icon-chevron-down.svg");
   appearance: none;
+  /* background-color: rgb(68, 64, 64); */
   background-repeat: no-repeat;
   background-position: right 16px top 50%;
 }

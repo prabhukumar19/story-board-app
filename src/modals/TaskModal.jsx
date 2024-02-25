@@ -6,6 +6,7 @@ import boardsSlice from "../redux/slices/BoardsSlice";
 import Subtask from "../components/Subtask";
 import AddEditTaskModal from "./AddEditTaskModal";
 import DeleteModal from "./DeleteModal";
+import { RxCrossCircled } from "react-icons/rx";
 
 function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
   const dispatch = useDispatch();
@@ -78,15 +79,17 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 
       <div className=" scrollbar-hide overflow-y-scroll max-h-[95vh]  my-auto  bg-white dark:bg-[#2b2c37] text-black dark:text-white font-bold shadow-md shadow-[#364e7e1a] max-w-md mx-auto  w-full px-8  py-8 rounded-xl">
         <div className=" relative flex   justify-between w-full items-center">
-          <h1 className=" text-lg">{task.title}</h1>
-
+          <div className="flex justify-between items-center">
+          <h1 className=" text-lg mr-8">{task.title}</h1>
+          <RxCrossCircled className="cursor-pointer" size={20} onClick={()=>setIsTaskModalOpen(false)}/>
+          </div>
           <img
             onClick={() => {
               setIsElipsisMenuOpen((prevState) => !prevState);
             }}
             src={elipsis}
             alt="elipsis"
-            className=" cursor-pointer h-6"
+            className=" cursor-pointer h-6 ml-3"
           />
           {isElipsisMenuOpen && (
             <ElipsisMenu
@@ -126,12 +129,12 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
             Current Status
           </label>
           <select
-            className=" select-status flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border-[1px] border-gray-300 focus:outline-[#635fc7] outline-none"
+            className="select-status dark:bg-[#1f1c1c] flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border-[1px] border-gray-300 focus:outline-[#635fc7] outline-none"
             value={status}
             onChange={onChange}
           >
             {columns.map((col, index) => (
-              <option className="status-options" key={index}>
+              <option className="status-options dark:text-white" key={index}>
                 {col.name}
               </option>
             ))}

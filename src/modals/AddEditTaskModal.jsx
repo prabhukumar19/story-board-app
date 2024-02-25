@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import crossIcon from "../assets/icon-cross.svg";
 import boardsSlice from "../redux/slices/BoardsSlice";
+import { RxCrossCircled } from "react-icons/rx";
 
 function AddEditTaskModal({
   type,
@@ -120,10 +121,12 @@ function AddEditTaskModal({
         className=" scrollbar-hide overflow-y-scroll max-h-[95vh]  my-auto  bg-white dark:bg-[#2b2c37] text-black dark:text-white font-bold
        shadow-md shadow-[#364e7e1a] max-w-md mx-auto  w-full px-8  py-8 rounded-xl"
       >
+        <div className="flex justify-between items-center">
         <h3 className=" text-lg ">
           {type === "edit" ? "Edit" : "Add New"} Task
         </h3>
-
+        <RxCrossCircled className="cursor-pointer" onClick={()=>setIsAddTaskModalOpen(false)}/>
+        </div>
         {/* Task Name */}
 
         <div className="mt-8 flex flex-col space-y-1">
@@ -205,7 +208,7 @@ function AddEditTaskModal({
           <select
             value={status}
             onChange={onChangeStatus}
-            className=" select-status flex-grow px-4 py-2 rounded-md text-sm bg-transparent focus:border-0  border-[1px] border-gray-300 focus:outline-[#635fc7] outline-none"
+            className=" select-status flex-grow px-4 py-2 dark:bg-[#1f1c1c] rounded-md text-sm bg-transparent focus:border-0  border-[1px] border-gray-300 focus:outline-[#635fc7] outline-none"
           >
             {columns.map((column, index) => (
               <option key={index}>{column.name}</option>

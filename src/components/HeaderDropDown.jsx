@@ -6,18 +6,17 @@ import useDarkMode from "../hooks/useDarkMode";
 import darkIcon from "../assets/icon-dark-theme.svg";
 import lightIcon from "../assets/icon-light-theme.svg";
 import boardsSlice from "../redux/slices/BoardsSlice";
-
+import { MdCreateNewFolder } from "react-icons/md";
 
 function HeaderDropDown({ setOpenDropdown, setIsBoardModalOpen }) {
   const dispatch = useDispatch()
-  const [themeColor, setTheme] = useDarkMode();
+  const [colorTheme, setTheme] = useDarkMode();
   const [darkSide, setDarkSide] = useState(
-    themeColor === "light" ? true : false
+    colorTheme === "light" ? true : false
   );
 
   const toggleDarkMode = (checked) => {
-    setTheme(themeColor);
-    console.log("Toggle dark mode");
+    setTheme(colorTheme);
     setDarkSide(checked);
   };
 
@@ -63,7 +62,7 @@ function HeaderDropDown({ setOpenDropdown, setIsBoardModalOpen }) {
             setOpenDropdown(false)
           }}
           className=" flex items-baseline space-x-2  text-[#635fc7] px-5 py-4  ">
-            <img src={boardIcon} className="   filter-white  h-4 " />
+            <MdCreateNewFolder/>
             <p className=" text-lg font-bold  ">Create New Board </p>
           </div>
 
